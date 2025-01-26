@@ -1,13 +1,15 @@
 const { spawn } = require("child_process");
 const { app, BrowserWindow, screen } = require("electron");
+const path = require("path");
 
-const child = spawn(
-	"Stremio_Runtime/StremioService.app/Contents/MacOS/stremio-service",
-	[],
-	{
-		shell: true,
-	}
+const servicePath = path.join(
+	__dirname,
+	"Stremio_Runtime/StremioService.app/Contents/MacOS/stremio-service"
 );
+
+const child = spawn(servicePath, [], {
+	shell: true,
+});
 
 child.stdout.on("data", (data) => {
 	console.log(`stdout: ${data}`);
@@ -15,6 +17,10 @@ child.stdout.on("data", (data) => {
 
 child.stderr.on("data", (data) => {
 	console.error(`stderr: ${data}`);
+});
+
+child.on("error", (err) => {
+	console.error(`Failed to start subprocess: ${err}`);
 });
 
 child.on("close", (code) => {
@@ -29,7 +35,7 @@ const CreateWindow = () => {
 		webPreferences: {
 			nodeIntegration: true,
 		},
-		icon: "img/stremio.icns",
+		icon: path.join(__dirname, "img/stremio.icns"),
 	});
 	win.loadURL("https://web.stremio.com");
 };
