@@ -1,0 +1,33 @@
+
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+            <dict>
+                <key>CFBundleDisplayName</key>
+                <string>Stremio Service</string>
+                <key>CFBundleIdentifier</key>
+                <string>com.stremio.service</string>
+                <key>CFBundleVersion</key>
+                <string>0.1.13</string>
+                <key>CFBundleShortVersionString</key>
+                <string>0.1.13</string>
+                <key>CFBundleIconFile</key>
+                <string>StremioService.icns</string>
+                <key>CFBundleExecutable</key>
+                <string>stremio-service</string>
+                <key>NSHumanReadableCopyright</key>
+                <string>Copyright (C) 2017-2024 Smart Code OOD 203358507</string>
+                <key>CFBundleURLTypes</key>
+                <array>
+                    <dict>
+                        <key>CFBundleURLName</key>
+                        <string>Stremio Service</string>
+                        <key>CFBundleURLSchemes</key>
+                        <array>
+                            <string>stremio</string>
+                        </array>
+                    </dict>
+                </array>
+            </dict>
+        </plist>
+    
