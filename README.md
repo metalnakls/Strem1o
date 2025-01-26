@@ -1,0 +1,1 @@
+# Stremio-shell-ng-MacOs
