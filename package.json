@@ -8,7 +8,9 @@
 		"start": "electron-forge start",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"package": "electron-forge package",
-		"make": "electron-forge make"
+		"make": "electron-forge make",
+		"package:mac:x64": "electron-forge package --arch=x64",
+		"package:mac:arm64": "electron-forge package --arch=arm64"
 	},
 	"license": "GPL-2.0-only",
 	"description": "Stremio web Wrapper for MacOs",
