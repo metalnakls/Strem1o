@@ -10,7 +10,8 @@
 		"package": "electron-forge package",
 		"make": "electron-forge make",
 		"package:mac:x64": "electron-forge package --arch=x64",
-		"package:mac:arm64": "electron-forge package --arch=arm64"
+		"package:mac:arm64": "electron-forge package --arch=arm64",
+		"postpack": "if [ \"$npm_config_arch\" = \"arm64\" ] && [ -d \"Stremio_Runtime/StremioService.x64.app\" ]; then rm -rf Stremio_Runtime/StremioService.x64.app; elif [ -d \"Stremio_Runtime/StremioService.arm.app\" ]; then rm -rf Stremio_Runtime/StremioService.arm.app; fi"
 	},
 	"license": "GPL-2.0-only",
 	"description": "Stremio web Wrapper for MacOs",
