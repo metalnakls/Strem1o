@@ -1,10 +1,14 @@
-const { spawn } = require("child_process");
+const { spawn, spawnSync } = require("child_process");
 const { app, BrowserWindow, screen } = require("electron");
 const path = require("path");
 
+const arch = process.arch;
+const serviceName =
+	arch === "arm64" ? "StremioService.arm.app" : "StremioService.x64.app";
+
 const servicePath = path.join(
 	__dirname,
-	"Stremio_Runtime/StremioService.app/Contents/MacOS/stremio-service"
+	`Stremio_Runtime/${serviceName}/Contents/MacOS/stremio-service`
 );
 
 const child = spawn(servicePath, [], {
@@ -44,4 +48,5 @@ app.whenReady().then(CreateWindow);
 
 app.on("before-quit", () => {
 	child.kill();
+	spawnSync("pkill", ["-f", "stremio-runtime"]);
 });
