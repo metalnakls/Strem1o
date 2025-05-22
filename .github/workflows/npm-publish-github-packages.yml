@@ -21,6 +21,11 @@ jobs:
       with:
         node-version: '22'
 
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        toolchain: stable # Ensures the stable toolchain is used, aligning with your rust-toolchain.toml
+
     - name: Install dependencies
       run: npm install
 

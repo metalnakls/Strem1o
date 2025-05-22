@@ -3,16 +3,14 @@ const { app, BrowserWindow, screen } = require("electron");
 const path = require("path");
 
 const arch = process.arch;
-const serviceName =
-	arch === "arm64" ? "StremioService.arm.app" : "StremioService.x64.app";
+const serviceName = "stremio-service";
 
-const servicePath = path.join(
-	__dirname,
-	`Stremio_Runtime/${serviceName}/Contents/MacOS/stremio-service`
-);
+const servicePath = app.isPackaged
+	? path.join(process.resourcesPath, "stremio-service-build", serviceName) // Adjusted path
+	: path.join(__dirname, "stremio-service", "target", "release", serviceName);
 
 const child = spawn(servicePath, [], {
-	shell: true,
+	detached: false, // Changed from shell: true
 });
 
 child.stdout.on("data", (data) => {
