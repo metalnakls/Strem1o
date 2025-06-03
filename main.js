@@ -36,9 +36,18 @@ const CreateWindow = () => {
 		height: Math.round(height * 0.8),
 		webPreferences: {
 			nodeIntegration: true,
+			preload: path.join(__dirname, "preload.js"),
 		},
 		icon: path.join(__dirname, "img/stremio.icns"),
 	});
+
+	win.webContents.on("before-input-event", (event, input) => {
+		if (input.key === "Escape") {
+			event.preventDefault();
+			win.webContents.send("forward-escape-key");
+		}
+	});
+
 	win.loadURL("https://web.stremio.com");
 };
 
