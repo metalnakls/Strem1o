@@ -1,6 +1,14 @@
 const { ipcRenderer } = require("electron");
 
+let lastProcessedTime = 0;
+const debounceTime = 200;
 ipcRenderer.on("forward-escape-key", () => {
+	const now = Date.now();
+	if (now - lastProcessedTime < debounceTime) {
+		return;
+	}
+	lastProcessedTime = now;
+
 	const commonEventProps = {
 		key: "Backspace",
 		code: "Backspace",
@@ -13,7 +21,4 @@ ipcRenderer.on("forward-escape-key", () => {
 
 	const keydownEvent = new KeyboardEvent("keydown", commonEventProps);
 	window.dispatchEvent(keydownEvent);
-
-	const keyupEvent = new KeyboardEvent("keyup", commonEventProps);
-	window.dispatchEvent(keyupEvent);
 });
