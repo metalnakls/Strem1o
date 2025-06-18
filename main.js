@@ -5,9 +5,7 @@ const path = require("path");
 const arch = process.arch;
 const serviceName = "stremio-service";
 
-const servicePath = app.isPackaged
-	? path.join(process.resourcesPath, "stremio-service-build", serviceName) // Adjusted path
-	: path.join(__dirname, "stremio-service", "target", "release", serviceName);
+const servicePath = path.join(process.resourcesPath, serviceName);
 
 const child = spawn(servicePath, [], {
 	detached: false, // Changed from shell: true

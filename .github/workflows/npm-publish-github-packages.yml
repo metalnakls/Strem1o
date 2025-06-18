@@ -37,11 +37,11 @@ jobs:
 
     - name: Create dmg for arm64
       run: |
-        hdiutil create -volname Stremio -srcfolder ./out/stremio-darwin-arm64/stremio.app -ov -format UDZO stremio-arm64.dmg
+        hdiutil create -volname Stremio -srcfolder ./out/stremio-darwin-arm64/Stremio.app -ov -format UDZO stremio-arm64.dmg
 
     - name: Create dmg for x64
       run: |
-        hdiutil create -volname Stremio -srcfolder ./out/stremio-darwin-x64/stremio.app -ov -format UDZO stremio-x64.dmg
+        hdiutil create -volname Stremio -srcfolder ./out/stremio-darwin-x64/Stremio.app -ov -format UDZO stremio-x64.dmg
 
     - name: Create Draft Release
       id: create_release
