@@ -73,3 +73,4 @@ jobs:
         asset_path: ./stremio-x64.dmg
         asset_name: stremio-x64.dmg
         asset_content_type: application/octet-stream
+    environment: production
