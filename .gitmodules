@@ -1,0 +1,3 @@
+[submodule "stremio-service"]
+	path = stremio-service
+	url = https://github.com/Stremio/stremio-service
